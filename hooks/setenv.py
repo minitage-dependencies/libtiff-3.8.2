@@ -9,7 +9,7 @@ if uname == 'Darwin':
 
 
 
-def appendEnvVar(env,var,sep=":",before=True):
+def append_env_var(env,var,sep=":",before=True):
     """ append text to a environnement variable
     @param env String variable to set
     @param before append before or after the variable"""
@@ -20,10 +20,10 @@ def appendEnvVar(env,var,sep=":",before=True):
 
 def getlibtiffenv(options,buildout):
     for var in ['zlib','libjpeg', 'libiconv',]:
-        appendEnvVar('LDFLAGS', ["-L%(lib)s/lib -Wl,-rpath -Wl,%(lib)s/lib %(os)s"%{'lib':buildout[var]['location'],'os':os_ldflags}],sep=' ',before=False)
-        appendEnvVar('LD_RUN_PATH', ["%(lib)s/lib"%{'lib':buildout[var]['location']}],sep=':',before=False)
-        appendEnvVar('CFLAGS',   ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
-        appendEnvVar('CPPFLAGS', ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
-        appendEnvVar('CXXFLAGS', ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
+        append_env_var('LDFLAGS', ["-L%(lib)s/lib -Wl,-rpath -Wl,%(lib)s/lib %(os)s"%{'lib':buildout[var]['location'],'os':os_ldflags}],sep=' ',before=False)
+        append_env_var('LD_RUN_PATH', ["%(lib)s/lib"%{'lib':buildout[var]['location']}],sep=':',before=False)
+        append_env_var('CFLAGS',   ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
+        append_env_var('CPPFLAGS', ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
+        append_env_var('CXXFLAGS', ["-I%s/include "%(buildout[var]['location'])],sep=' ',before=False)
 
 # vim:set ts=4 sts=4 et  :
